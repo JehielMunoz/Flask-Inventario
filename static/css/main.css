@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+table tr td:empty {
+  width: 150px;
+}
+
+table tr td {
+
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<h1>Ingresar especie</h1>
+{% endblock %}
+
+{% block body %}<!--@submit.prevent="processForm"   -->
+<form method="POST" action="/addItem.html" name="newItem" id="addItemForm">
+    <h3>Codigo Producto:{{cod}}</h3><br>
+    <table id="selectCrearHolder">
+        <tr>
+            <th>
+                <label for="especie">Descripción:</label>
+            </th>
+            <td>
+                <input type="text" id="especie" name="especie">
+            </td>
+            <td></td>
+            <th>
+                <label for="estado">Estado del producto:</label>
+            </th>
+            <td>
+                <input type="text" id="estado" name="estado"><br>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="precio_unitario">Precio unitario:</label>
+            </th>
+            <td>
+                <input type="number" id="precio_unitario" name="precio_unitario"><br>
+            </td>
+            <td></td>
+            <th>
+                <label for="precio_total">Precio Total:</label>
+            </th>
+            <td>
+                <input type="number" id="precio_total" name="precio_total"><br>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="numero_factura">Número de factura:</label>
+            </th>
+            <td>
+                <input type="number" id="numero_factura" name="numero_factura"><br>
+            </td>
+        <td></td>
+            <th>
+                <label for="fecha_recepcion">Fecha de recepción:</label>
+            </th>
+            <td>
+                <input type="date" id="fecha_recepcion" name="fecha_recepcion"><br>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="rut_proveedor">Rut del proveedor:</label>
+            </th>
+            <td>
+                <input type="text" id="rut_proveedor" name="rut_proveedor"><br>
+            </td>
+            <td></td>
+            <th>
+                <label for="centro_de_costo">Centro de costos (recursos):</label>
+            </th>
+            <td>
+                <input type="text" id="centro_de_costo" name="centro_de_costo"><br>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="ubicacion_actual">Ubicación actual:</label>
+            </th>
+            <td>
+                <input type="text" id="ubicacion_actual" name="ubicacion_actual"><br>
+            </td>
+            <td></td>
+            <th>
+                <label for="observaciones">Observaciones:</label>
+            </th>
+            <td>
+                <input type="text" id="observaciones" name="observaciones"><br>
+            </td>
+        </tr>
+        <tr>
+
+            <th>
+                <label for="codigo_barra">Código de barras:</label>
+            </th>
+            <td>
+                <input type="text" id="codigo_barra" name="codigo_barra"><br>
+            </td>
+
+
+        <tr>
+            <td></td>
+            <th></th><td><input type="submit" value="Agregar Especie" id="addProd" name="addProd"></td>
+
+
+            <td><input type="submit" value="Cancelar" id="cancelItem" name="cancelItem"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+
+<!--
+
+Bajo los campos deben haber dos botones:
+
+Aceptar (Envía los datos al back end).
+Cancelar (Cancela la operación).
+  “Especie creada exitosamente”, en caso contrario mostrar el mensaje “Error al ingresar especie.”
+-->

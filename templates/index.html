@@ -1,7 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <META
-</head>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+<h1>Template</h1>
+{% endblock %}
+
+{% block body %}
+<a href="addItem.html" type="button">add</a>
+    <div>
+        {% if t %}
+            {% for prov in t %}
+                <div class="registroProv">
+                    <p>Rut: {{t[prov]["rut"]}}</p>
+                    <p>Razon Social: {{t[prov]["razonSocial"]}}</p><p>Email: {{t[prov]["email"]}}</p>
+                    <p>Telefono: {{t[prov]["telefono"]}}</p><p>Estado: {{t[prov]["estado"]}}</p>
+                </div>
+            {% endfor %}
+        {%else%}
+            <div>
+                <p>Sin datos.</p>
+            </div>
+        {% endif %}
+    </div>
+{%for x in t%}
+   <!-- #//{%for j in x%}#//{%endfor%}-->
+        <p>que pasa</p>{{t[x]["rut"]}}<br>
+
+{%endfor%}
+{{t}}
+{% endblock %}
+Console.log(newItem)
