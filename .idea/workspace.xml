@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdd2e90c-ceab-41a3-b823-6d8acefa800c" name="Default Changelist" comment="First commit.">
-      <change afterPath="$PROJECT_DIR$/database/authKey.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/addItem.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+    <list default="true" id="bdd2e90c-ceab-41a3-b823-6d8acefa800c" name="Default Changelist" comment="Primeras pruebas de lectura y escritura.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/conn.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/conn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/proyectoi-invedu-firebase-adminsdk-nplni-3aa203bb29.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,12 +108,20 @@
       <option name="project" value="LOCAL" />
       <updated>1623888974644</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Primeras pruebas de lectura y escritura.">
+      <created>1623927617418</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1623927617418</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit." />
+    <MESSAGE value="Primeras pruebas de lectura y escritura." />
+    <option name="LAST_COMMIT_MESSAGE" value="Primeras pruebas de lectura y escritura." />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623923792694">
@@ -131,30 +132,34 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1623888652599" />
-    <state width="1345" height="175" key="GridCell.Tab.0.bottom" timestamp="1623927473091">
+    <state width="1345" height="137" key="GridCell.Tab.0.bottom" timestamp="1623928454648">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="175" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1623927473091" />
-    <state width="1345" height="175" key="GridCell.Tab.0.center" timestamp="1623927473091">
+    <state width="1345" height="137" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1623928454648" />
+    <state width="1345" height="137" key="GridCell.Tab.0.center" timestamp="1623928454648">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="175" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1623927473091" />
-    <state width="1345" height="175" key="GridCell.Tab.0.left" timestamp="1623927473090">
+    <state width="1345" height="137" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1623928454648" />
+    <state width="1345" height="137" key="GridCell.Tab.0.left" timestamp="1623928454648">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="175" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1623927473090" />
-    <state width="1345" height="175" key="GridCell.Tab.0.right" timestamp="1623927473091">
+    <state width="1345" height="137" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1623928454648" />
+    <state width="1345" height="137" key="GridCell.Tab.0.right" timestamp="1623928454648">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="175" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1623927473091" />
+    <state width="1345" height="137" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1623928454648" />
     <state x="184" y="14" key="SettingsEditor" timestamp="1623900468112">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1623900468112" />
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1623889007120">
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1623927619135">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1623889007120" />
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1623927619135" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623927588889">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1623927588889" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1623896585546">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

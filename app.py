@@ -29,6 +29,9 @@ def index():
 
 @app.route('/addItem.html', methods=['GET','POST'])
 def addItem():
+    dbPath = db.reference('/')
+    dbPath = dbPath.child("data").child("especies").get()
+    maxId = str(len(dbPath))
     if request.method == 'POST':
         especie = request.form["especie"]
         estado = request.form["estado"]
@@ -43,7 +46,7 @@ def addItem():
         codigo_barra = request.form["codigo_barra"]
 
         item = {
-            "codigo_correlativo": 1003,
+            "codigo_correlativo": maxId,
             "especie":  especie,
             "estado":   estado,
             "precio_unitario":  precio_unitario,
@@ -57,16 +60,16 @@ def addItem():
             "codigo_barra": codigo_barra
         }
         try:
-            database = db.reference('/')
-            database = database.child("data").child("especies")
-            database.push({"1003": item})
+            dbAddPath = db.reference('/')
+            dbAddPath = dbAddPath.child("data").child("especies").update({maxId: item})
+            #dbAddPath.push({maxId: item})
             print(item)
             # database.child("data").child("especies").child(str(last_code)).push(item)
             # database.child(last_code).patch(item)
             return redirect("/")
         except:
             return render_template("addItem.html", message="Something wrong happened")
-    return render_template("addItem.html")
+    return render_template("addItem.html",cod=maxId)
 if __name__ == '__main__':
     app.run(debug=True)
 """
