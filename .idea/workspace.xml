@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdd2e90c-ceab-41a3-b823-6d8acefa800c" name="Default Changelist" comment="Primeras pruebas de lectura y escritura.">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -140,6 +139,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit." />
@@ -171,10 +171,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1345" height="137" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1623928454648" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1623987894085">
+    <state x="184" y="14" key="SettingsEditor" timestamp="1624052203650">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1623987894085" />
+    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1624052203650" />
     <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1623988186995">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
