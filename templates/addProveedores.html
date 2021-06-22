@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Proveedores</title>
+<h1 style="text-align: center;">Agregar proveedores</h1>
+{% endblock %}
+
+{% block body %}
+<form action="/addProveedores.html" method="POST" name="agregarProv">
+  <p>Razon Social: <input type="text" id="razon_social" name="razon_social" size="40"></p>
+  <p>Rut: <input type="text" id="rut" name="rut" placeholder="Ej.: 11111111-1"></p>
+  <p>Correo Electronico: <input type="email" id="email" name="email"></p>
+  <p>Numero Telefonico: <input type="text" id="telefono" name="telefono"></p>
+  <p>
+  <input type="submit" value="Registrar" id="addProveedor" name="addProv">
+  <input type="submit" value="Cancelar" id="cancelProveedor" name="cancelProveedor">
+  </p>
+</form>
+{% endblock %}
