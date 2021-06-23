@@ -104,6 +104,8 @@ def addProveedor():
 def addUsuario():
     dbPath = db.reference('/')
     dbPath = dbPath.child("usuarios").get()
+    tamaño = str(len(dbPath))
+
     if request.method == 'POST':
         nombre = request.form['nombre']
         rut = request.form['rut']
@@ -111,27 +113,34 @@ def addUsuario():
         numero_telefonico = request.form['telefono']
         contraseña = request.form['contraseña']
 
-        proveedor = {
-            "razonSocial": razon_social,
+        usuario = {
+            "nombre": nombre,
             "email": correo,
-            "estado": "Activo",
             "telefono": numero_telefonico,
             "rut": rut,
             "contraseña": contraseña
         }
         try:         
             dbAddPath = db.reference('/')
-            dbAddPath = dbAddPath.child("usuarios").update({rut: usuarios})
+            dbAddPath = dbAddPath.child("usuarios").update({rut: usuario})
             print(proveedor)
             return redirect("/")
         except:    
             return render_template("addUsuarios.html", message="Something wrong happened")        
-    return render_template("Usuarios.html")
+    return render_template("addUsuarios.html", cod=tamaño)
 
 @app.route('/usuarios.html', methods=['GET','POST'])
-def cambiarPagina():
+def accUsuarios():
     return render_template("addUsuarios.html")
 
+
+@app.route('/listUsuarios.html', methods=['GET','POST'])
+def accList():
+    users = database.child("usuarios").get()
+    if users is None:
+        return render_template("listUsuarios.html")
+    else:
+        return render_template("listUsuarios.html", u=users)
 
 if __name__ == '__main__':
     app.run(debug=True)

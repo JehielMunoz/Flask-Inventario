@@ -6,9 +6,12 @@
 {% endblock %}
 
 {% block body %}
-<button onclick="location.href='addItem.html'">Agregar Items</button>
-<button onclick="location.href='addProveedores.html'">Agregar Proveedores</button>
-<button onclick="location.href='usuarios.html'">Usuarios</button>
+<div style="text-align: center;">
+    <button onclick="location.href='addItem.html'">Agregar Items</button>
+    <button onclick="location.href='addProveedores.html'">Agregar Proveedores</button>
+    <button onclick="location.href='usuarios.html'">Usuarios</button>
+</div>
+
     <div>
         {% if t %}
             {% for prov in t %}

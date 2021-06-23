@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block body %}
-<form action="/addUsuarios.html" method="POST" name="agregarUsuario">
+<div style="text-align: center;">
+  <form action="/addUsuarios.html" method="POST" name="agregarUsuario" id="agregUsuario">
     <p>Nombre <input type="text" id="nombre" name="nombre" size="40"></p>
     <p>Rut: <input type="text" id="rut" name="rut" placeholder="Ej.: 11111111-1"></p>
     <p>Correo Electronico: <input type="email" id="email" name="email"></p>
@@ -17,4 +18,7 @@
     <input type="submit" value="Cancelar" id="cancelUsuario" name="cancelUsuario">
     </p>
   </form>
+  
+  <button onclick="location.href='listUsuarios.html'">Listado usuarios</button>
+</div>
 {% endblock %}
