@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<h1>Template</h1>
+<h1 style="text-align: center;" >Bienvenido</h1>
+<title>Inicio</title>
 {% endblock %}
 
 {% block body %}
-<a href="addItem.html" type="button">add</a>
+<button onclick="location.href='addItem.html'">Agregar Items</button>
+<button onclick="location.href='addProveedores.html'">Agregar Proveedores</button>
+<button onclick="location.href='usuarios.html'">Usuarios</button>
     <div>
         {% if t %}
             {% for prov in t %}

@@ -1,7 +1,7 @@
 import firebase_admin
-from firebase_admin import db,credentials
-from flask import Flask, render_template, request
-import pyrebase
+from firebase_admin import db, credentials
+from flask import Flask, render_template, request, current_app
+
 from werkzeug.utils import redirect
 
 app = Flask(__name__)
@@ -62,16 +62,81 @@ def addItem():
         try:
             dbAddPath = db.reference('/')
             dbAddPath = dbAddPath.child("data").child("especies").update({maxId: item})
-            #dbAddPath.push({maxId: item})
+            # dbAddPath.push({maxId: item})
             print(item)
             # database.child("data").child("especies").child(str(last_code)).push(item)
             # database.child(last_code).patch(item)
             return redirect("/")
+            
         except:
             return render_template("addItem.html", message="Something wrong happened")
     return render_template("addItem.html",cod=maxId)
+
+@app.route('/addProveedores.html', methods=['GET','POST'])
+def addProveedor():
+    dbPath = db.reference('/')
+    dbPath = dbPath.child("proveedores").get()
+    tamaño = str(len(dbPath))
+
+    if request.method == 'POST':
+        razon_social = request.form['razon_social']
+        rut = request.form['rut']
+        correo = request.form['email']
+        numero_telefonico = request.form['telefono']
+
+        proveedor = {
+            "razonSocial": razon_social,
+            "email": correo,
+            "estado": "Activo",
+            "telefono": numero_telefonico,
+            "rut": rut
+        }
+        try:         
+            dbAddPath = db.reference('/')
+            dbAddPath = dbAddPath.child("proveedores").update({rut: proveedor})
+            print(proveedor)
+            return redirect("/")
+        except:    
+            return render_template("addProveedores.html", message="Something wrong happened")        
+    return render_template("addProveedores.html", cod=tamaño)
+
+@app.route('/addUsuarios.html', methods=['GET','POST'])
+def addUsuario():
+    dbPath = db.reference('/')
+    dbPath = dbPath.child("usuarios").get()
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        rut = request.form['rut']
+        correo = request.form['email']
+        numero_telefonico = request.form['telefono']
+        contraseña = request.form['contraseña']
+
+        proveedor = {
+            "razonSocial": razon_social,
+            "email": correo,
+            "estado": "Activo",
+            "telefono": numero_telefonico,
+            "rut": rut,
+            "contraseña": contraseña
+        }
+        try:         
+            dbAddPath = db.reference('/')
+            dbAddPath = dbAddPath.child("usuarios").update({rut: usuarios})
+            print(proveedor)
+            return redirect("/")
+        except:    
+            return render_template("addUsuarios.html", message="Something wrong happened")        
+    return render_template("Usuarios.html")
+
+@app.route('/usuarios.html', methods=['GET','POST'])
+def cambiarPagina():
+    return render_template("addUsuarios.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 """
 :
     last_code = len(database.child("data").child("especies").get())

@@ -6,15 +6,8 @@
 {% endblock %}
 
 {% block body %}
-<form action="/usuarios.html" method="POST" name="agregarUsuario">
-    <p>Nombre <input type="text" id="nombre" name="nombre" size="40"></p>
-    <p>Rut: <input type="text" id="rut" name="rut" placeholder="Ej.: 11111111-1"></p>
-    <p>Correo Electronico: <input type="email" id="email" name="email"></p>
-    <p>Numero Telefonico: <input type="text" id="telefono" name="telefono"></p>
-    <p>Contraseña: <input type="password" id="contraseña" name="contraseña"></p>
-    <p>
-    <input type="submit" value="Registrar" id="addUsuario" name="addUser">
-    <input type="submit" value="Cancelar" id="cancelUsuario" name="cancelUsuario">
-    </p>
-  </form>
+<div style="text-align: center;">
+  <button onclick="location.href='addUsuarios.html'">Agregar usuarios</button>
+  <button onclick="location.href='listUsuarios.html'">Listar usuarios</button>
+</div>
 {% endblock %}

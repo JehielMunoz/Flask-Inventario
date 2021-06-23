@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Usuarios</title>
+<h1 style="text-align: center;">Usuarios</h1>
+{% endblock %}
+
+{% block body %}
+<table class="default">
+  <tr>
+    <th>Nombre</th>
+    <th>Rut</th>
+    <th>Correo Electronico</th>
+    <th>Nro. Telefónico</th>
+    <th>Acciones</th>
+  </tr>
+  <tr>
+    <td>Ejemplo1</td>
+    <td>11111111-1</td>
+    <td>prueba@prueba.cl</td>
+    <td>912345678</td>
+    <td>
+        <input type="submit" value="Eliminar">
+        <input type="submit" value="Actualizar">    
+    </td>
+  </tr>
+</table>
+{% endblock %}
