@@ -46,18 +46,18 @@ def addItem():
         codigo_barra = request.form["codigo_barra"]
 
         item = {
-            "codigo_correlativo": maxId,
-            "especie":  especie,
-            "estado":   estado,
-            "precio_unitario":  precio_unitario,
-            "precio_total": precio_total,
+            "codigo_correlativo": int(maxId),
+            "especie":          especie,
+            "estado":           estado,
+            "precio_unitario":  int(precio_unitario),
+            "precio_total":     int(precio_total),
             "fecha_recepcion":  fecha_recepcion,
-            "numero_factura":   numero_factura,
+            "numero_factura":   int(numero_factura),
             "rut_proveedor":    rut_proveedor,
             "centro_de_costo":  centro_de_costo,
             "ubicacion_actual": ubicacion_actual,
             "observaciones":    observaciones,
-            "codigo_barra": codigo_barra
+            "codigo_barra":     int(codigo_barra)
         }
         try:
             dbAddPath = db.reference('/')
