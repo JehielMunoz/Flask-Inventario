@@ -46,28 +46,33 @@ def addItem():
         codigo_barra = request.form["codigo_barra"]
 
         item = {
-            "codigo_correlativo": maxId,
-            "especie":  especie,
-            "estado":   estado,
-            "precio_unitario":  precio_unitario,
-            "precio_total": precio_total,
+            "codigo_correlativo": int(maxId),
+            "especie":          especie,
+            "estado":           estado,
+            "precio_unitario":  int(precio_unitario),
+            "precio_total":     int(precio_total),
             "fecha_recepcion":  fecha_recepcion,
-            "numero_factura":   numero_factura,
+            "numero_factura":   int(numero_factura),
             "rut_proveedor":    rut_proveedor,
             "centro_de_costo":  centro_de_costo,
             "ubicacion_actual": ubicacion_actual,
             "observaciones":    observaciones,
-            "codigo_barra": codigo_barra
+            "codigo_barra":     int(codigo_barra)
         }
         try:
             dbAddPath = db.reference('/')
             dbAddPath = dbAddPath.child("data").child("especies").update({maxId: item})
             # dbAddPath.push({maxId: item})
-            print(item)
+            #print(item)
             # database.child("data").child("especies").child(str(last_code)).push(item)
             # database.child(last_code).patch(item)
-            return redirect("/")
-            
+            #return redirect("/")
+            print("Antes" + str(maxId))
+            dbPathTwo = db.reference('/')
+            dbPathTwo = dbPathTwo.child("data").child("especies").get()
+            maxId = str(len(dbPathTwo))
+            print("Despues" + str(maxId))
+            return render_template("addItem.html",cod=maxId)
         except:
             return render_template("addItem.html", message="Something wrong happened")
     return render_template("addItem.html",cod=maxId)
@@ -85,11 +90,11 @@ def addProveedor():
         numero_telefonico = request.form['telefono']
 
         proveedor = {
-            "razonSocial": razon_social,
-            "email": correo,
-            "estado": "Activo",
-            "telefono": numero_telefonico,
-            "rut": rut
+            "razonSocial":  razon_social,
+            "email":        correo,
+            "estado":       "Activo",
+            "telefono":     int(numero_telefonico),
+            "rut":          rut
         }
         try:         
             dbAddPath = db.reference('/')
@@ -104,8 +109,6 @@ def addProveedor():
 def addUsuario():
     dbPath = db.reference('/')
     dbPath = dbPath.child("usuarios").get()
-    tamaño = str(len(dbPath))
-
     if request.method == 'POST':
         nombre = request.form['nombre']
         rut = request.form['rut']
@@ -113,34 +116,27 @@ def addUsuario():
         numero_telefonico = request.form['telefono']
         contraseña = request.form['contraseña']
 
-        usuario = {
-            "nombre": nombre,
-            "email": correo,
-            "telefono": numero_telefonico,
-            "rut": rut,
-            "contraseña": contraseña
+        usuarios = {
+            "razonSocial":  nombre,
+            "email":        correo,
+            "estado":       "Activo",
+            "telefono":     int(numero_telefonico),
+            "rut":          rut,
+            "contraseña":   contraseña
         }
         try:         
             dbAddPath = db.reference('/')
-            dbAddPath = dbAddPath.child("usuarios").update({rut: usuario})
-            print(proveedor)
+            dbAddPath = dbAddPath.child("usuarios").update({rut: usuarios})
+            print(usuarios)
             return redirect("/")
         except:    
             return render_template("addUsuarios.html", message="Something wrong happened")        
-    return render_template("addUsuarios.html", cod=tamaño)
+    return render_template("Usuarios.html")
 
 @app.route('/usuarios.html', methods=['GET','POST'])
-def accUsuarios():
+def cambiarPagina():
     return render_template("addUsuarios.html")
 
-
-@app.route('/listUsuarios.html', methods=['GET','POST'])
-def accList():
-    users = database.child("usuarios").get()
-    if users is None:
-        return render_template("listUsuarios.html")
-    else:
-        return render_template("listUsuarios.html", u=users)
 
 if __name__ == '__main__':
     app.run(debug=True)

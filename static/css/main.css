@@ -1,20 +1,5 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
-}
-
-table{
-    width:500px;
-    font:normal 13px Arial;
-    text-align:center;
-    border-collapse:collapse;
-    align-items: center;
-}
-
-#agregarUsuario {
-  visibility: hidden;
-}
-
-#tablaUsuarios{
-  visibility: hidden;
+.bg-custom-1{
+    /*border-style: solid;*/
+    background: -webkit-linear-gradient(left, #39507C 0%, #E8420A 100%);
+    color:white;
 }

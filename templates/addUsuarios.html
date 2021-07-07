@@ -2,23 +2,22 @@
 
 {% block head %}
 <title>Usuarios</title>
-<h1 style="text-align: center;">Usuarios</h1>
 {% endblock %}
 
 {% block body %}
-<div style="text-align: center;">
-  <form action="/addUsuarios.html" method="POST" name="agregarUsuario" id="agregUsuario">
+<form action="/addUsuarios.html" method="POST" name="agregarUsuario">
     <p>Nombre <input type="text" id="nombre" name="nombre" size="40"></p>
     <p>Rut: <input type="text" id="rut" name="rut" placeholder="Ej.: 11111111-1"></p>
     <p>Correo Electronico: <input type="email" id="email" name="email"></p>
     <p>Numero Telefonico: <input type="text" id="telefono" name="telefono"></p>
     <p>Contraseña: <input type="password" id="contraseña" name="contraseña"></p>
     <p>
-    <input type="submit" value="Registrar" id="addUsuario" name="addUser">
-    <input type="submit" value="Cancelar" id="cancelUsuario" name="cancelUsuario">
+    <input onclick="return confirm('Usuario creado exitosamente')" type="submit" value="Registrar" id="addUsuario" name="addUser">
+
     </p>
   </form>
-  
-  <button onclick="location.href='listUsuarios.html'">Listado usuarios</button>
+
+<div style="margin-left:37.8%">
+    <button onclick="location.href='/'">Cancelar</button>
 </div>
 {% endblock %}
