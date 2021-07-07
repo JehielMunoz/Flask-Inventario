@@ -10,31 +10,33 @@
 <button onclick="location.href='addItem.html'">Agregar Items</button>
 <button onclick="location.href='addProveedores.html'">Agregar Proveedores</button>
 <button onclick="location.href='usuarios.html'">Usuarios</button>
-</div>
+</div>text-center
 -->
-<div class="card-deck">
-  <div class="card" onclick="location.href='addItem.html'">
-    <img src="{{ url_for('static', filename='images/inv.png') }}" class="card-img-top" width="150" height="150"  alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Control Inventario</h5>
-      <p class="card-text">Agregar, modificar y buscar especies dentro del establecimiento.</p>
+<h1 class="display-4 text-center">Bienvenido</h1>
+<div class="d-inline-flex p-2 justify-content-center" style="width:100%;margin-top:5%">
+  <div class="card-deck">
+    <div class="card" style="width: 15rem;">
+      <img src="{{ url_for('static', filename='images/inv.png') }}" class="card-img-top" alt="..." onclick="location.href='addItem.html'">
+      <div class="card-body">
+        <h5 class="card-title">Control Inventario</h5>
+        <p class="card-text">Agregar, modificar y buscar especies dentro del establecimiento.</p>
+      </div>
     </div>
-  </div>
-  <div class="card" onclick="location.href='addProveedores.html'">
-    <img src="{{ url_for('static', filename='images/provider.png') }}" class="card-img-top" width="150" height="150" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Control Proveedores</h5>
-      <p class="card-text">Agregar, modificar y buscar proveedores.</p>
+    <div class="card" style="width: 15rem;">
+      <img src="{{ url_for('static', filename='images/provider.png') }}" class="card-img-top" alt="..." onclick="location.href='addProveedores.html'">
+      <div class="card-body">
+        <h5 class="card-title">Control Proveedores</h5>
+        <p class="card-text">Agregar, modificar y buscar proveedores.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="card" onclick="location.href='usuarios.html'">
-    <img src="{{ url_for('static', filename='images/users.png') }}" class="card-img-top" width="150" height="150" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Control Usuarios</h5>
-      <p class="card-text">Crear, modificar y buscar usuarios.</p>
+    <div class="card" style="width: 15rem;">
+      <img src="{{ url_for('static', filename='images/user.png') }}" class="card-img-top" alt="..." onclick="location.href='usuarios.html'" >
+      <div class="card-body">
+        <h5 class="card-title">Control Usuarios</h5>
+        <p class="card-text">Crear, modificar y buscar usuarios.</p>
+      </div>
     </div>
   </div>
 </div>
-
 {% endblock %}

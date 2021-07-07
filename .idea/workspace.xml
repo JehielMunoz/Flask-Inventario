@@ -19,17 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37695c5b-3214-46a8-972f-5156f3e69895" name="Default Changelist" comment="">
+    <list default="true" id="37695c5b-3214-46a8-972f-5156f3e69895" name="Default Changelist" comment="Agregado Bootstrap en base.html e index.html.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addItem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addProveedores.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addProveedores.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addUsuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addUsuarios.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/listUsuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/listUsuarios.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/usuarios.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/usuarios.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623927617418</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Agregado Bootstrap en base.html e index.html.">
+      <created>1625656123968</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1625656123968</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,7 +163,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit." />
     <MESSAGE value="Primeras pruebas de lectura y escritura." />
-    <option name="LAST_COMMIT_MESSAGE" value="Primeras pruebas de lectura y escritura." />
+    <MESSAGE value="Agregado Bootstrap en base.html e index.html." />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregado Bootstrap en base.html e index.html." />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623923792694">
@@ -193,14 +195,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1624052203650" />
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1623988186995">
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1625656127088">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1623988186995" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624487656986">
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1625656127088" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625665977364">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1624487656986" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1625665977364" />
     <state x="462" y="270" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1623987030727">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
