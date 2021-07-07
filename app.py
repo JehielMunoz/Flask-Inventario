@@ -63,11 +63,16 @@ def addItem():
             dbAddPath = db.reference('/')
             dbAddPath = dbAddPath.child("data").child("especies").update({maxId: item})
             # dbAddPath.push({maxId: item})
-            print(item)
+            #print(item)
             # database.child("data").child("especies").child(str(last_code)).push(item)
             # database.child(last_code).patch(item)
-            return redirect("/")
-            
+            #return redirect("/")
+            print("Antes" + str(maxId))
+            dbPathTwo = db.reference('/')
+            dbPathTwo = dbPathTwo.child("data").child("especies").get()
+            maxId = str(len(dbPathTwo))
+            print("Despues" + str(maxId))
+            return render_template("addItem.html",cod=maxId)
         except:
             return render_template("addItem.html", message="Something wrong happened")
     return render_template("addItem.html",cod=maxId)
@@ -85,11 +90,11 @@ def addProveedor():
         numero_telefonico = request.form['telefono']
 
         proveedor = {
-            "razonSocial": razon_social,
-            "email": correo,
-            "estado": "Activo",
-            "telefono": numero_telefonico,
-            "rut": rut
+            "razonSocial":  razon_social,
+            "email":        correo,
+            "estado":       "Activo",
+            "telefono":     int(numero_telefonico),
+            "rut":          rut
         }
         try:         
             dbAddPath = db.reference('/')
@@ -111,18 +116,18 @@ def addUsuario():
         numero_telefonico = request.form['telefono']
         contraseña = request.form['contraseña']
 
-        proveedor = {
-            "razonSocial": razon_social,
-            "email": correo,
-            "estado": "Activo",
-            "telefono": numero_telefonico,
-            "rut": rut,
-            "contraseña": contraseña
+        usuarios = {
+            "razonSocial":  nombre,
+            "email":        correo,
+            "estado":       "Activo",
+            "telefono":     int(numero_telefonico),
+            "rut":          rut,
+            "contraseña":   contraseña
         }
         try:         
             dbAddPath = db.reference('/')
             dbAddPath = dbAddPath.child("usuarios").update({rut: usuarios})
-            print(proveedor)
+            print(usuarios)
             return redirect("/")
         except:    
             return render_template("addUsuarios.html", message="Something wrong happened")        

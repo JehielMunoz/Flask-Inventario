@@ -1,108 +1,198 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Especies</title>
-<h1>Ingresar especie</h1>
+<title>Agregar Especie</title>
 {% endblock %}
 
 {% block body %}<!--@submit.prevent="processForm"   -->
-<form method="POST" action="/addItem.html" name="newItem" id="addItemForm">
-    <h3>Codigo Producto:{{cod}}</h3><br>
-    <table id="selectCrearHolder">
-        <tr>
-            <th>
-                <label for="especie">Descripción:</label>
-            </th>
-            <td>
-                <input type="text" id="especie" name="especie">
-            </td>
+<div align="center">
+    <form method="POST" action="/addItem.html" name="newItem" id="newItem" >
+        <h3>Codigo Producto:{{cod}}</h3><br>
+        <table id="selectCrearHolder">
+            <tr>
+                <th>
+                    <label for="especie">Descripción:</label>
+                </th>
+                <td>
+                    <input type="text" id="especie" name="especie">
+                </td>
+                <td></td>
+                <th>
+                    <label for="estado">Estado del producto:</label>
+                </th>
+                <td>
+                    <input type="text" id="estado" name="estado"><br>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="precio_unitario">Precio unitario:</label>
+                </th>
+                <td>
+                    <input type="number" id="precio_unitario" name="precio_unitario"><br>
+                </td>
+                <td></td>
+                <th>
+                    <label for="precio_total">Precio Total:</label>
+                </th>
+                <td>
+                    <input type="number" id="precio_total" name="precio_total"><br>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="numero_factura">Número de factura:</label>
+                </th>
+                <td>
+                    <input type="number" id="numero_factura" name="numero_factura"><br>
+                </td>
             <td></td>
-            <th>
-                <label for="estado">Estado del producto:</label>
-            </th>
-            <td>
-                <input type="text" id="estado" name="estado"><br>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <label for="precio_unitario">Precio unitario:</label>
-            </th>
-            <td>
-                <input type="number" id="precio_unitario" name="precio_unitario"><br>
-            </td>
-            <td></td>
-            <th>
-                <label for="precio_total">Precio Total:</label>
-            </th>
-            <td>
-                <input type="number" id="precio_total" name="precio_total"><br>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <label for="numero_factura">Número de factura:</label>
-            </th>
-            <td>
-                <input type="number" id="numero_factura" name="numero_factura"><br>
-            </td>
-        <td></td>
-            <th>
-                <label for="fecha_recepcion">Fecha de recepción:</label>
-            </th>
-            <td>
-                <input type="date" id="fecha_recepcion" name="fecha_recepcion"><br>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <label for="rut_proveedor">Rut del proveedor:</label>
-            </th>
-            <td>
-                <input type="text" id="rut_proveedor" name="rut_proveedor"><br>
-            </td>
-            <td></td>
-            <th>
-                <label for="centro_de_costo">Centro de costos (recursos):</label>
-            </th>
-            <td>
-                <input type="text" id="centro_de_costo" name="centro_de_costo"><br>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <label for="ubicacion_actual">Ubicación actual:</label>
-            </th>
-            <td>
-                <input type="text" id="ubicacion_actual" name="ubicacion_actual"><br>
-            </td>
-            <td></td>
-            <th>
-                <label for="observaciones">Observaciones:</label>
-            </th>
-            <td>
-                <input type="text" id="observaciones" name="observaciones"><br>
-            </td>
-        </tr>
-        <tr>
+                <th>
+                    <label for="fecha_recepcion">Fecha de recepción:</label>
+                </th>
+                <td>
+                    <input type="date" id="fecha_recepcion" name="fecha_recepcion"><br>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="rut_proveedor">Rut del proveedor:</label>
+                </th>
+                <td>
+                    <input type="text" id="rut_proveedor" name="rut_proveedor"><br>
+                </td>
+                <td></td>
+                <th>
+                    <label for="centro_de_costo">Centro de costos (recursos):</label>
+                </th>
+                <td>
+                    <input type="text" id="centro_de_costo" name="centro_de_costo"><br>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="ubicacion_actual">Ubicación actual:</label>
+                </th>
+                <td>
+                    <input type="text" id="ubicacion_actual" name="ubicacion_actual"><br>
+                </td>
+                <td></td>
+                <th>
+                    <label for="observaciones">Observaciones:</label>
+                </th>
+                <td>
+                    <input type="text" id="observaciones" name="observaciones"><br>
+                </td>
+            </tr>
+            <tr>
 
-            <th>
-                <label for="codigo_barra">Código de barras:</label>
-            </th>
-            <td>
-                <input type="text" id="codigo_barra" name="codigo_barra"><br>
-            </td>
-
-
-        <tr>
-            <td></td>
-            <th></th><td><input type="submit" value="Agregar Especie" id="addProd" name="addProd"></td>
+                <th>
+                    <label for="codigo_barra">Código de barras:</label>
+                </th>
+                <td>
+                    <input type="text" id="codigo_barra" name="codigo_barra"><br>
+                </td>
 
 
-            <td><input type="submit" value="Cancelar" id="cancelItem" name="cancelItem"></td>
-        </tr>
-    </table>
-</form>
+            <tr>
+                <td></td><!--
+                <th></th><td>
+                onclick="return confirm('Especie creada exitosamente')"
+                -->
+                    <td><input onclick="showItem({{cod}})" type="submit" value="Agregar Especie" id="addProd" name="addProd"></td>
+            </tr>
+        </table>
+    </form>
+    <div>
+        <button onclick="location.href='/'">Cancelar</button>
+    </div>
+    </div>
+<script>
+    function showItem(cod){
+    let esp = document.forms["newItem"]["especie"].value;
+      let est = document.forms["newItem"]["estado"].value;
+      let pun = document.forms["newItem"]["precio_unitario"].value;
+      let pto = document.forms["newItem"]["precio_total"].value;
+      let fre = document.forms["newItem"]["fecha_recepcion"].value;
+      let nfa = document.forms["newItem"]["numero_factura"].value;
+      let rpr = document.forms["newItem"]["rut_proveedor"].value;
+      let cco = document.forms["newItem"]["centro_de_costo"].value;
+      let uac = document.forms["newItem"]["ubicacion_actual"].value;
+      let obs = document.forms["newItem"]["observaciones"].value;
+      let cba = document.forms["newItem"]["codigo_barra"].value;
+
+      let msg = "Codigo correlativo: " + cod + '\n' +
+                "Descripcion: " + document.forms["newItem"]["especie"].value + '\n' +
+                "Numero de factura: " + document.forms["newItem"]["numero_factura"].value + '\n' +
+                "Codigo de barras: " + document.forms["newItem"]["codigo_barra"].value + '\n' +
+                "Ubicacion: " + document.forms["newItem"]["ubicacion_actual"].value;
+      console.log(cba);
+      let msgFinal = "Especie creada exitosamente: " + msg;
+      return confirm(msgFinal)
+    }
+    function validateForm() {
+      let esp = document.forms["newItem"]["especie"].value;
+      let est = document.forms["newItem"]["estado"].value;
+      let pun = document.forms["newItem"]["precio_unitario"].value;
+      let pto = document.forms["newItem"]["precio_total"].value;
+      let fre = document.forms["newItem"]["fecha_recepcion"].value;
+      let nfa = document.forms["newItem"]["numero_factura"].value;
+      let rpr = document.forms["newItem"]["rut_proveedor"].value;
+      let cco = document.forms["newItem"]["centro_de_costo"].value;
+      let uac = document.forms["newItem"]["ubicacion_actual"].value;
+      let obs = document.forms["newItem"]["observaciones"].value;
+      let cba = document.forms["newItem"]["codigo_barra"].value;
+
+      if (esp == "") {
+        alert("Debe ingresar descripción.");
+        return false;
+      }
+      if (est == "") {
+        alert("Debe ingresar estado.");
+        return false;
+      }
+      if (pun == "") {
+        alert("Debe ingresar precio unitario.");
+        return false;
+      }
+      if (pto == "") {
+        alert("Debe ingresar precio total.");
+        return false;
+      }
+      if (fre == "") {
+        alert("Debe ingresar fecha de recepción.");
+        return false;
+      }
+      if (nfa == "") {
+        alert("Debe ingresar numero de factura.");
+        return false;
+      }
+      if (rpr == "") {
+        alert("Debe ingresar rut de proveedor.");
+        return false;
+      }
+      if (cco == "") {
+        alert("Debe ingresar centro de costos.");
+        return false;
+      }
+      if (uac == "") {
+        alert("Debe ingresar ubicacion actual.");
+        return false;
+      }
+      if (obs == "") {
+        alert("Debe ingresar observacion.");
+        return false;
+      }
+      if (cba == "") {
+        alert("Debe ingresar codigo de barras.");
+        return false;
+      }
+      else{
+        confirm('Especie creada exitosamente');
+        return true;
+      }
+    }
+</script>
 {% endblock %}
 
 <!--

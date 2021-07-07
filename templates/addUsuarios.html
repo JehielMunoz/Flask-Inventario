@@ -2,7 +2,6 @@
 
 {% block head %}
 <title>Usuarios</title>
-<h1 style="text-align: center;">Usuarios</h1>
 {% endblock %}
 
 {% block body %}
@@ -13,8 +12,12 @@
     <p>Numero Telefonico: <input type="text" id="telefono" name="telefono"></p>
     <p>Contraseña: <input type="password" id="contraseña" name="contraseña"></p>
     <p>
-    <input type="submit" value="Registrar" id="addUsuario" name="addUser">
-    <input type="submit" value="Cancelar" id="cancelUsuario" name="cancelUsuario">
+    <input onclick="return confirm('Usuario creado exitosamente')" type="submit" value="Registrar" id="addUsuario" name="addUser">
+
     </p>
   </form>
+
+<div style="margin-left:37.8%">
+    <button onclick="location.href='/'">Cancelar</button>
+</div>
 {% endblock %}

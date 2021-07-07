@@ -2,7 +2,6 @@
 
 {% block head %}
 <title>Proveedores</title>
-<h1 style="text-align: center;">Agregar proveedores</h1>
 {% endblock %}
 
 {% block body %}
@@ -12,8 +11,11 @@
   <p>Correo Electronico: <input type="email" id="email" name="email"></p>
   <p>Numero Telefonico: <input type="text" id="telefono" name="telefono"></p>
   <p>
-  <input type="submit" value="Registrar" id="addProveedor" name="addProv">
-  <input type="submit" value="Cancelar" id="cancelProveedor" name="cancelProveedor">
+  <input onclick="return confirm('Proveedor creado exitosamente')" type="submit" value="Registrar" id="addProveedor" name="addProv">
+
   </p>
 </form>
+<div style="margin-left:37.8%">
+    <button onclick="location.href='/'">Cancelar</button>
+</div>
 {% endblock %}
