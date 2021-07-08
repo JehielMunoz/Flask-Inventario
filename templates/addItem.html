@@ -5,109 +5,274 @@
 {% endblock %}
 
 {% block body %}<!--@submit.prevent="processForm"   -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Codigo correlativo de la especie: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Codigo correlativo:</p>
+        <p>Descripcion:</p>
+        <p>Numero de factura:</p>
+        <p>Codigo de barras:</p>
+        <p>Ubicacion:</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="row" style="width:100%;">
+  <div class="col-2" style="margin-top:2%;">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-create" role="tab" aria-controls="v-pills-create" aria-selected="true">Crear</a>
+      <a class="nav-link" id="v-pills-modify-tab" data-toggle="pill" href="#v-pills-modify" role="tab" aria-controls="v-pills-modify" aria-selected="false">Modificar</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Listar inventario</a>
+      <a class="nav-link" id="v-pills-list-tab" data-toggle="pill" href="#v-pills-list" onclick="location.href='/'" role="tab" aria-controls="v-pills-list" aria-selected="false">Volver</a>
+    </div>
+  </div>
+  <div class="col-9" style="margin-top:2%;">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-create" role="tabpanel" aria-labelledby="v-pills-create-tab">
+
+        <form method="POST" action="/addItem.html" name="newItem" id="newItem">
+            <div class="form-group row">
+                <label for="especie" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="especie" placeholder="Descripcion de la especie." name="especie">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="codigo_barra" class="col-sm-2 col-form-label col-form-label-sm">Código de barras</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="codigo_barra" placeholder="" name="codigo_barra">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="numero_factura" class="col-sm-2 col-form-label col-form-label-sm">Número de factura</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" id="numero_factura" name="numero_factura" placeholder="Factura asociada a la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="precio_unitario" class="col-sm-2 col-form-label col-form-label-sm">Precio unitario</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" id="precio_unitario" name="precio_unitario" placeholder="Precio de la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="precio_total" class="col-sm-2 col-form-label col-form-label-sm">Precio Total</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" id="precio_total" name="precio_total" placeholder="Precio total de la compra.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="fecha_recepcion" class="col-sm-2 col-form-label col-form-label-sm">Fecha de recepción</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control form-control-sm" id="fecha_recepcion" name="fecha_recepcion" placeholder="Fecha en la que se recibio la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="rut_proveedor" class="col-sm-2 col-form-label col-form-label-sm">Rut del proveedor</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="rut_proveedor" name="rut_proveedor" placeholder="Rut sin punto con guión.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="centro_de_costo" class="col-sm-2 col-form-label col-form-label-sm">Recursos</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="centro_de_costo" name="centro_de_costo" placeholder="Centro de costos.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="ubicacion_actual" class="col-sm-2 col-form-label col-form-label-sm">Ubicación actual</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="ubicacion_actual" name="ubicacion_actual" placeholder="Ubicación en la que se encuentra la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="observaciones" class="col-sm-2 col-form-label col-form-label-sm">Observaciones</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="observaciones" name="observaciones" placeholder="">
+                    </div>
+            </div>
+
+            <fieldset class="form-group">
+                <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Estado</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estado" id="estadoB" value="option1" checked>
+                            <label class="form-check-label" for="estadoB">
+                                Bueno
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estado" id="estadoM" value="option2">
+                            <label class="form-check-label" for="estadoM">
+                                Malo
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estado" id="estadoR" value="option2">
+                            <label class="form-check-label" for="estadoR">
+                                Regular
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+        </form>
+        <div align="center">
+            <button class="btn btn-secondary" onclick="location.href='/'">Cancelar</button>
+            <button type="input" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModalCenter"> Guardar </button>
+        </div>
+
+  </div>
+      <div class="tab-pane fade" id="v-pills-modify" role="tabpanel" aria-labelledby="v-pills-modify-tab">
+          <form method="POST" action="/addItem.html" name="newItem" id="newItem">
+            <div class="form-group row">
+                <label for="especie" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="especie" placeholder="Descripcion de la especie." name="especie">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="codigo_barra" class="col-sm-2 col-form-label col-form-label-sm">Código de barras</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="codigo_barra" placeholder="" name="codigo_barra">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="numero_factura" class="col-sm-2 col-form-label col-form-label-sm">Número de factura</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" id="numero_factura" name="numero_factura" placeholder="Factura asociada a la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="precio_unitario" class="col-sm-2 col-form-label col-form-label-sm">Precio unitario</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" id="precio_unitario" name="precio_unitario" placeholder="Precio de la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="precio_total" class="col-sm-2 col-form-label col-form-label-sm">Precio Total</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control form-control-sm" id="precio_total" name="precio_total" placeholder="Precio total de la compra.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="fecha_recepcion" class="col-sm-2 col-form-label col-form-label-sm">Fecha de recepción</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control form-control-sm" id="fecha_recepcion" name="fecha_recepcion" placeholder="Fecha en la que se recibio la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="rut_proveedor" class="col-sm-2 col-form-label col-form-label-sm">Rut del proveedor</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="rut_proveedor" name="rut_proveedor" placeholder="Rut sin punto con guión.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="centro_de_costo" class="col-sm-2 col-form-label col-form-label-sm">Recursos</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="centro_de_costo" name="centro_de_costo" placeholder="Centro de costos.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="ubicacion_actual" class="col-sm-2 col-form-label col-form-label-sm">Ubicación actual</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="ubicacion_actual" name="ubicacion_actual" placeholder="Ubicación en la que se encuentra la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="observaciones" class="col-sm-2 col-form-label col-form-label-sm">Observaciones</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="observaciones" name="observaciones" placeholder="">
+                    </div>
+            </div>
+
+            <fieldset class="form-group">
+                <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Estado</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estado" id="estadoB" value="option1" checked>
+                            <label class="form-check-label" for="estadoB">
+                                Bueno
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estado" id="estadoM" value="option2">
+                            <label class="form-check-label" for="estadoM">
+                                Malo
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estado" id="estadoR" value="option2">
+                            <label class="form-check-label" for="estadoR">
+                                Regular
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+        </form>
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-list" role="tabpanel" aria-labelledby="v-pills-list-tab">...</div>
+    </div>
+  </div>
+</div>
+<!--
 <div align="center">
-    <form method="POST" action="/addItem.html" name="newItem" id="newItem" >
+    <form method="POST" action="/addItem.html" name="newItem" id="newItem2" >
         <h3>Codigo Producto:{{cod}}</h3><br>
-        <table id="selectCrearHolder">
-            <tr>
-                <th>
-                    <label for="especie">Descripción:</label>
-                </th>
-                <td>
-                    <input type="text" id="especie" name="especie">
-                </td>
-                <td></td>
-                <th>
-                    <label for="estado">Estado del producto:</label>
-                </th>
-                <td>
-                    <input type="text" id="estado" name="estado"><br>
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    <label for="precio_unitario">Precio unitario:</label>
-                </th>
-                <td>
-                    <input type="number" id="precio_unitario" name="precio_unitario"><br>
-                </td>
-                <td></td>
-                <th>
-                    <label for="precio_total">Precio Total:</label>
-                </th>
-                <td>
-                    <input type="number" id="precio_total" name="precio_total"><br>
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    <label for="numero_factura">Número de factura:</label>
-                </th>
-                <td>
-                    <input type="number" id="numero_factura" name="numero_factura"><br>
-                </td>
-            <td></td>
-                <th>
-                    <label for="fecha_recepcion">Fecha de recepción:</label>
-                </th>
-                <td>
-                    <input type="date" id="fecha_recepcion" name="fecha_recepcion"><br>
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    <label for="rut_proveedor">Rut del proveedor:</label>
-                </th>
-                <td>
-                    <input type="text" id="rut_proveedor" name="rut_proveedor"><br>
-                </td>
-                <td></td>
-                <th>
-                    <label for="centro_de_costo">Centro de costos (recursos):</label>
-                </th>
-                <td>
-                    <input type="text" id="centro_de_costo" name="centro_de_costo"><br>
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    <label for="ubicacion_actual">Ubicación actual:</label>
-                </th>
-                <td>
-                    <input type="text" id="ubicacion_actual" name="ubicacion_actual"><br>
-                </td>
-                <td></td>
-                <th>
-                    <label for="observaciones">Observaciones:</label>
-                </th>
-                <td>
-                    <input type="text" id="observaciones" name="observaciones"><br>
-                </td>
-            </tr>
-            <tr>
 
-                <th>
-                    <label for="codigo_barra">Código de barras:</label>
-                </th>
-                <td>
-                    <input type="text" id="codigo_barra" name="codigo_barra"><br>
-                </td>
-
-
-            <tr>
-                <td></td><!--
+                <td></td><!-
                 <th></th><td>
                 onclick="return confirm('Especie creada exitosamente')"
-                -->
-                    <td><input onclick="showItem({{cod}})" type="submit" value="Agregar Especie" id="addProd" name="addProd"></td>
+                <input onclick="showItem({{cod}})" type="submit" value="Agregar Especie" id="addProd" name="addProd">
+                --
+                    <td>
+                        <!- Button trigger modal --
+                        <button type="input" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                          Launch demo modal
+                        </button>
+                        </td>
             </tr>
         </table>
     </form>
+
     <div>
         <button onclick="location.href='/'">Cancelar</button>
     </div>
-    </div>
+    </div>-->
 <script>
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('New message to ' + recipient)
+      modal.find('.modal-body input').val(recipient)
+    })
+
     function showItem(cod){
     let esp = document.forms["newItem"]["especie"].value;
       let est = document.forms["newItem"]["estado"].value;
