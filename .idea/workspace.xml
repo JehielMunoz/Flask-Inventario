@@ -19,10 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37695c5b-3214-46a8-972f-5156f3e69895" name="Default Changelist" comment="Menu inicio v0.1">
+    <list default="true" id="37695c5b-3214-46a8-972f-5156f3e69895" name="Default Changelist" comment="AddItem v0.3">
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addItem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -151,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625665998972</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="AddItem v0.3">
+      <created>1625702748575</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1625702748575</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,41 +178,42 @@
     <MESSAGE value="Primeras pruebas de lectura y escritura." />
     <MESSAGE value="Agregado Bootstrap en base.html e index.html." />
     <MESSAGE value="Menu inicio v0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu inicio v0.1" />
+    <MESSAGE value="AddItem v0.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddItem v0.3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623923792694">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1623923792694" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1623987163670">
+    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1625704217797">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1623987163670" />
-    <state width="1345" height="40" key="GridCell.Tab.0.bottom" timestamp="1625702198084">
+    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1625704217797" />
+    <state width="672" height="303" key="GridCell.Tab.0.bottom" timestamp="1625702778909">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="40" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1625702198084" />
-    <state width="1345" height="40" key="GridCell.Tab.0.center" timestamp="1625702198084">
+    <state width="672" height="303" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1625702778909" />
+    <state width="672" height="303" key="GridCell.Tab.0.center" timestamp="1625702778909">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="40" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1625702198084" />
-    <state width="1345" height="40" key="GridCell.Tab.0.left" timestamp="1625702198083">
+    <state width="672" height="303" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1625702778909" />
+    <state width="672" height="303" key="GridCell.Tab.0.left" timestamp="1625702778909">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="40" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1625702198083" />
-    <state width="1345" height="40" key="GridCell.Tab.0.right" timestamp="1625702198084">
+    <state width="672" height="303" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1625702778909" />
+    <state width="672" height="303" key="GridCell.Tab.0.right" timestamp="1625702778909">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="40" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1625702198084" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1624052203650">
+    <state width="672" height="303" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1625702778909" />
+    <state x="150" y="0" key="SettingsEditor" timestamp="1625704553448">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1624052203650" />
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1625666001535">
+    <state x="150" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1625704553448" />
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1625702750902">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1625666001535" />
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1625702750902" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625702689263">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
