@@ -19,16 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37695c5b-3214-46a8-972f-5156f3e69895" name="Default Changelist" comment="Archivos varios.">
-      <change afterPath="$PROJECT_DIR$/static/js/form.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/modifyItem.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/modifyProv.html" afterDir="false" />
+    <list default="true" id="37695c5b-3214-46a8-972f-5156f3e69895" name="Default Changelist" comment="Busqueda/ingreso de item, ingreso de proveedores.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addItem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addProveedores.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addProveedores.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625704654497</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Busqueda/ingreso de item, ingreso de proveedores.">
+      <created>1626291437532</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1626291437533</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,7 +193,8 @@
     <MESSAGE value="Menu inicio v0.1" />
     <MESSAGE value="AddItem v0.3" />
     <MESSAGE value="Archivos varios." />
-    <option name="LAST_COMMIT_MESSAGE" value="Archivos varios." />
+    <MESSAGE value="Busqueda/ingreso de item, ingreso de proveedores." />
+    <option name="LAST_COMMIT_MESSAGE" value="Busqueda/ingreso de item, ingreso de proveedores." />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="171" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623923792694">
@@ -208,22 +209,38 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1625705544102" />
-    <state width="1345" height="22" key="GridCell.Tab.0.bottom" timestamp="1626291208772">
+    <state width="1323" height="232" key="GridCell.Tab.0.bottom" timestamp="1626293269425">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="22" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1626291208772" />
-    <state width="1345" height="22" key="GridCell.Tab.0.center" timestamp="1626291208772">
+    <state width="1323" height="232" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1626293269425" />
+    <state width="1323" height="232" key="GridCell.Tab.0.center" timestamp="1626293269425">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="22" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1626291208772" />
-    <state width="1345" height="22" key="GridCell.Tab.0.left" timestamp="1626291208772">
+    <state width="1323" height="232" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1626293269425" />
+    <state width="1323" height="232" key="GridCell.Tab.0.left" timestamp="1626293269425">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="22" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1626291208772" />
-    <state width="1345" height="22" key="GridCell.Tab.0.right" timestamp="1626291208772">
+    <state width="1323" height="232" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1626293269425" />
+    <state width="1323" height="232" key="GridCell.Tab.0.right" timestamp="1626293269425">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="22" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1626291208772" />
+    <state width="1323" height="232" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1626293269425" />
+    <state width="1323" height="232" key="GridCell.Tab.1.bottom" timestamp="1626293214191">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="232" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1626293214191" />
+    <state width="1323" height="232" key="GridCell.Tab.1.center" timestamp="1626293214191">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="232" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1626293214191" />
+    <state width="1323" height="232" key="GridCell.Tab.1.left" timestamp="1626293214190">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="232" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1626293214190" />
+    <state width="1323" height="232" key="GridCell.Tab.1.right" timestamp="1626293214191">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="232" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1626293214191" />
     <state x="475" y="89" key="RollbackChangesDialog" timestamp="1625704612350">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -236,18 +253,18 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.738@0.0.1366.738" timestamp="1626280400262" />
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1625704658157">
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1626291440417">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1625704658157" />
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1626291440417" />
     <state x="287" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1626206874019">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="287" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.738@0.0.1366.738" timestamp="1626206874019" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625704556686">
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1626291738191">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1625704556686" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1626291738191" />
     <state x="462" y="270" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1623987030727">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -256,5 +273,16 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1626281051017" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

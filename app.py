@@ -151,27 +151,24 @@ def addProveedor():
         correo = request.form['mailProv']
         numero_telefonico = request.form['telefonoProv']
         buscaRut = dbAddPath.child("proveedores").child(rut).get()
-        print(buscaRut)
         try:
-            if len(buscaRut)>0:
-                proveedor = {
-                    "razonSocial": razon_social,
-                    "email": correo,
-                    "estado": "Activo",
-                    "telefono": int(numero_telefonico),
-                    "rut": rut
-                }
-                try:
-                    dbAddPath.child("proveedores").update({rut: proveedor})
-                    print(proveedor)
-                    return render_template("addProveedores.html", err=1)
-                except:
-                    return render_template("addProveedores.html", message="Something wrong happened", err=1)
-
-            else:
-                return render_template("addProveedores.html", err=0)
+            x = len(buscaRut)
+            print(x)
+            return render_template("addProveedores.html", err=0)
         except:
-            return render_template("addProveedores.html", err=1)
+            proveedor = {
+                "razonSocial": razon_social,
+                "email": correo,
+                "estado": "Activo",
+                "telefono": int(numero_telefonico),
+                "rut": rut
+            }
+            try:
+                dbAddPath.child("proveedores").update({rut: proveedor})
+                print("postupdate")
+                return render_template("addProveedores.html", err=1)
+            except:
+                return render_template("addProveedores.html", message="Something wrong happened", err=1)
     return render_template("addProveedores.html", err=1)
 
 
