@@ -171,39 +171,98 @@ def addProveedor():
                 return render_template("addProveedores.html", message="Something wrong happened", err=1)
     return render_template("addProveedores.html", err=1)
 
+@app.route('/modifyProv.html', methods=['GET', 'POST'])
+def modifyProv():
+    o1,o2,o3,o4 = "","","",""
+    if request.method == 'POST':
+        sProv = request.form["sRProv"]
+        dbPath = db.reference('/')
+        dbPath = dbPath.child("proveedores").child(sProv).get()
+
+        try:
+            if("razonSocial" in dbPath): o1 = str(dbPath["razonSocial"])
+            else: o1="SIN-DATOS"
+
+            if("rut" in dbPath):o2 = str(dbPath["rut"])
+            else: o2 = "SIN-DATOS"
+
+            if("email" in dbPath): o3 = str(dbPath["email"])
+            else: o3 = "SIN-DATOS"
+
+            if("telefono" in dbPath): o4 = str(dbPath["telefono"])
+            else: o4 = "SIN-DATOS"
+
+            return render_template("modifyProv.html",
+                                razonSocial=o1,  rut=o2, email=o3, telefono=o4)
+        except:
+            return render_template("modifyProv.html", err = "error")
+    return render_template("modifyProv.html",
+                           razonSocial=o1,  rut=o2, email=o3, telefono=o4)
+
 
 @app.route('/addUsuarios.html', methods=['GET', 'POST'])
 def addUsuario():
-    dbPath = db.reference('/')
-    dbPath = dbPath.child("usuarios").get()
+    dbAddPath = db.reference('/')
     if request.method == 'POST':
-        nombre = request.form['nombre']
-        rut = request.form['rut']
-        correo = request.form['email']
-        numero_telefonico = request.form['telefono']
-        contraseña = request.form['contraseña']
-
-        usuarios = {
-            "razonSocial": nombre,
-            "email": correo,
-            "estado": "Activo",
-            "telefono": int(numero_telefonico),
-            "rut": rut,
-            "contraseña": contraseña
-        }
+        nombre = request.form['uNombre']
+        rut = request.form['uRut']
+        correo = request.form['uMail']
+        numero_telefonico = request.form['uFono']
+        contraseña = request.form['uPass']
+        buscaUsuario = dbAddPath.child("usuarios").child(rut).get()
         try:
-            dbAddPath = db.reference('/')
-            dbAddPath = dbAddPath.child("usuarios").update({rut: usuarios})
-            print(usuarios)
-            return redirect("/")
+            x = len(buscaUsuario)
+            print(x)
+            return render_template("addUsuarios.html", err=0)
         except:
-            return render_template("addUsuarios.html", message="Something wrong happened")
-    return render_template("Usuarios.html")
+            usuarios = {
+                "razonSocial": nombre,
+                "email": correo,
+                "estado": "Activo",
+                "telefono": int(numero_telefonico),
+                "rut": rut,
+                "contraseña": contraseña
+            }
+            try:
+                dbAddPath.child("usuarios").update({rut: usuarios})
+                print(usuarios)
+                return render_template("addUsuarios.html", err=1)
+            except:
+                return render_template("addUsuarios.html", message="Something wrong happened")
+    return render_template("addUsuarios.html", err=1)
 
 
-@app.route('/usuarios.html', methods=['GET', 'POST'])
-def cambiarPagina():
-    return render_template("addUsuarios.html")
+@app.route('/listUsuarios.html', methods=['GET', 'POST'])
+def modifyUsuarios():
+    o1, o2, o3, o4, o5 = "", "", "", "", ""
+    if request.method == 'POST':
+        uRut = request.form["uRut"]
+        dbPath = db.reference('/')
+        dbPath = dbPath.child("usuarios").child(uRut).get()
+
+        try:
+            if ("nombre" in dbPath): o1 = str(dbPath["nombre"])
+            else: o1 = "SIN-DATOS"
+
+            if ("rut" in dbPath): o2 = str(dbPath["rut"])
+            else: o2 = "SIN-DATOS"
+
+            if ("email" in dbPath): o3 = str(dbPath["email"])
+            else: o3 = "SIN-DATOS"
+
+            if ("telefono" in dbPath): o4 = str(dbPath["telefono"])
+            else: o4 = 0
+
+            if ("contraseña" in dbPath): o5 = str(dbPath["contraseña"])
+            else: o5 = "SIN-DATOS"
+
+            return render_template("modifyProv.html",
+                                   nombre=o1, rut=o2, email=o3, telefono=o4, contraseña=o5)
+        except:
+            return render_template("modifyProv.html", err="error")
+    return render_template("modifyProv.html",
+                           nombre=o1, rut=o2, email=o3, telefono=o4, contraseña=o5)
+
 
 
 if __name__ == '__main__':

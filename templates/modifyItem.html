@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Agregar Especie</title>
+<title>Buscar Especie</title>
 {% endblock %}
 
 {% block body %}<!--@submit.prevent="processForm"   -->
@@ -45,8 +45,10 @@
 
     <div class="tab-content" id="v-pills-tabContent">
 
-        <div class="tab-pane fade" id="v-pills-create" role="tabpanel" aria-labelledby="v-pills-create-tab">...</div>
-         <!--  BUSCAR ITEM  -->
+        <div class="tab-pane fade" id="v-pills-create" role="tabpanel" aria-labelledby="v-pills-create-tab"></div>
+
+      <div class="tab-pane fade show active" id="v-pills-modify" role="tabpanel" aria-labelledby="v-pills-modify-tab">
+           <!--  BUSCAR ITEM  -->
         <form method="POST" action="/modifyItem.html" name="sCodigoCor" id="sCodigoCor">
             <div class="input-group mb-3">
                 <input id="sCodCor" name="sCodCor" type="text" class="form-control" placeholder="Ingrese codigo correlativo a buscar" aria-describedby="button-addon2">
@@ -56,81 +58,80 @@
             </div>
         </form>
         <hr/>
-      <div class="tab-pane fade show active" id="v-pills-modify" role="tabpanel" aria-labelledby="v-pills-modify-tab">
           <form method="POST" action="/modifyItem.html" name="modifyItem" id="modifyItem">
             <div class="form-group row">
                 <label for="sEspecie" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
                     <div class="col-sm-10">
-                        <input value='{{rEspecie}}' type="text" class="form-control form-control-sm" id="sEspecie" placeholder="Descripcion de la especie." name="sEspecie">
+                        <input readonly value='{{rEspecie}}' type="text" class="form-control form-control-sm" id="sEspecie" placeholder="Descripcion de la especie." name="sEspecie">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sCodigo_barra" class="col-sm-2 col-form-label col-form-label-sm">Código de barras</label>
                     <div class="col-sm-10">
-                        <input value='{{rCBarra}}' type="text" class="form-control form-control-sm" id="sCodigo_barra" placeholder="" name="sCodigo_barra">
+                        <input readonly value='{{rCBarra}}' type="text" class="form-control form-control-sm" id="sCodigo_barra" placeholder="" name="sCodigo_barra">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sNumero_factura" class="col-sm-2 col-form-label col-form-label-sm">Número de factura</label>
                     <div class="col-sm-10">
-                        <input  value='{{rNFactura}}' type="number" class="form-control form-control-sm" id="sNumero_factura" name="sNumero_factura" placeholder="Factura asociada a la especie.">
+                        <input readonly value='{{rNFactura}}' type="number" class="form-control form-control-sm" id="sNumero_factura" name="sNumero_factura" placeholder="Factura asociada a la especie.">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sPrecio_unitario" class="col-sm-2 col-form-label col-form-label-sm">Precio unitario</label>
                     <div class="col-sm-10">
-                        <input value='{{rPUni}}' type="number" class="form-control form-control-sm" id="sPrecio_unitario" name="sPrecio_unitario" placeholder="Precio de la especie.">
+                        <input readonly value='{{rPUni}}' type="number" class="form-control form-control-sm" id="sPrecio_unitario" name="sPrecio_unitario" placeholder="Precio de la especie.">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sPrecio_total" class="col-sm-2 col-form-label col-form-label-sm">Precio Total</label>
                     <div class="col-sm-10">
-                        <input value='{{rPTotal}}' type="number" class="form-control form-control-sm" id="sPrecio_total" name="sPrecio_total" placeholder="Precio total de la compra.">
+                        <input readonly value='{{rPTotal}}' type="number" class="form-control form-control-sm" id="sPrecio_total" name="sPrecio_total" placeholder="Precio total de la compra.">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sFecha_recepcion" class="col-sm-2 col-form-label col-form-label-sm">Fecha de recepción</label>
                     <div class="col-sm-10">
-                        <input value='{{rFRecepcion}}' type="text" class="form-control form-control-sm" id="sFecha_recepcion" name="sFecha_recepcion" placeholder="Fecha en la que se recibio la especie.">
+                        <input readonly value='{{rFRecepcion}}' type="text" class="form-control form-control-sm" id="sFecha_recepcion" name="sFecha_recepcion" placeholder="Fecha en la que se recibio la especie.">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sRut_proveedor" class="col-sm-2 col-form-label col-form-label-sm">Rut del proveedor</label>
                     <div class="col-sm-10">
-                        <input value='{{rRProveedor}}' type="text" class="form-control form-control-sm" id="sRut_proveedor" name="sRut_proveedor" placeholder="Rut sin punto con guión.">
+                        <input readonly value='{{rRProveedor}}' type="text" class="form-control form-control-sm" id="sRut_proveedor" name="sRut_proveedor" placeholder="Rut sin punto con guión.">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sCentro_de_costo" class="col-sm-2 col-form-label col-form-label-sm">Recursos</label>
                     <div class="col-sm-10">
-                        <input value='{{rCCosto}}' type="text" class="form-control form-control-sm" id="sCentro_de_costo" name="sCentro_de_costo" placeholder="Centro de costos.">
+                        <input readonly value='{{rCCosto}}' type="text" class="form-control form-control-sm" id="sCentro_de_costo" name="sCentro_de_costo" placeholder="Centro de costos.">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sUbicacion_actual" class="col-sm-2 col-form-label col-form-label-sm">Ubicación actual</label>
                     <div class="col-sm-10">
-                        <input value='{{rUActual}}' type="text" class="form-control form-control-sm" id="sUbicacion_actual" name="sUbicacion_actual" placeholder="Ubicación en la que se encuentra la especie.">
+                        <input readonly value='{{rUActual}}' type="text" class="form-control form-control-sm" id="sUbicacion_actual" name="sUbicacion_actual" placeholder="Ubicación en la que se encuentra la especie.">
                     </div>
             </div>
             <div class="form-group row">
                 <label for="sObservaciones" class="col-sm-2 col-form-label col-form-label-sm">Observaciones</label>
                     <div class="col-sm-10">
-                        <input value='{{rObs}}' type="text" class="form-control form-control-sm" id="sObservaciones" name="sObservaciones" placeholder="">
+                        <input readonly value='{{rObs}}' type="text" class="form-control form-control-sm" id="sObservaciones" name="sObservaciones" placeholder="">
                     </div>
             </div>
 
             <div class="form-group row">
                 <label for="sEstado" class="col-sm-2 col-form-label col-form-label-sm">Estado</label>
                     <div class="col-sm-10">
-                        <input value='{{rEstado}}' type="text" class="form-control form-control-sm" id="sEstado" name="sEstado" placeholder="">
+                        <input readonly value='{{rEstado}}' type="text" class="form-control form-control-sm" id="sEstado" name="sEstado" placeholder="">
                     </div>
             </div>
 
         </form>
 
       </div>
-      <div class="tab-pane fade" id="v-pills-list" role="tabpanel" aria-labelledby="v-pills-list-tab">...</div>
-      <div class="tab-pane fade" id="v-pills-back" role="tabpanel" aria-labelledby="v-pills-back-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-list" role="tabpanel" aria-labelledby="v-pills-list-tab"></div>
+      <div class="tab-pane fade" id="v-pills-back" role="tabpanel" aria-labelledby="v-pills-back-tab"></div>
     </div>
   </div>
 </div>
