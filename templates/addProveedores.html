@@ -1,21 +1,161 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Proveedores</title>
+<title>Agregar Proveedor</title>
 {% endblock %}
 
-{% block body %}
-<form action="/addProveedores.html" method="POST" name="agregarProv">
-  <p>Razon Social: <input type="text" id="razon_social" name="razon_social" size="40"></p>
-  <p>Rut: <input type="text" id="rut" name="rut" placeholder="Ej.: 11111111-1"></p>
-  <p>Correo Electronico: <input type="email" id="email" name="email"></p>
-  <p>Numero Telefonico: <input type="text" id="telefono" name="telefono"></p>
-  <p>
-  <input onclick="return confirm('Proveedor creado exitosamente')" type="submit" value="Registrar" id="addProveedor" name="addProv">
-
-  </p>
-</form>
-<div style="margin-left:37.8%">
-    <button onclick="location.href='/'">Cancelar</button>
+{% block body %}<!--@submit.prevent="processForm"   -->
+<input id="checkErr" value="{{err}}" onclick="checkErr()" style="display:none">
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">¡Error al guardar! </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modalPass" style="display:none">
+          <p><b>Codigo correlativo:</b> <label id="rsProvModal"></label><br>
+            <b>Descripcion:</b>         <label id="rProvModal"></label><br>
+            <b>Codigo de barras:</b>    <label id="mProvModal"></label><br>
+            <b>Numero de factura:</b>   <label id="tProvModal"></label><br>
+      </div>
+      <div class="modal-body" id="modalFail" style="display:none">
+          <p><b>Debe ingresar todos los campos</b>, campo que falta:  <input id="fieldFail" class="form-control form-control-sm" aria-readonly="true"></p>
+      </div>
+      <div class="modal-body" id="savePass" style="display:none">
+          <p><b>Este mensaje se cerrará automaticamente...</b></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="modalCancel" data-dismiss="modal"style="display:block">Cancelar</button>
+        <button type="input" form="agregarProv" class="btn btn-primary" onclick="savePass()" id="btnCrear" style="display:none">Confirmar</button>
+        <button type="button" class="btn btn-primary" id="btnOk" data-dismiss="modal" onclick="modalReset()" style="display:none">Aceptar</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- FORM -->
+<div class="row" style="width:100%;">
+
+  <div class="col-2" style="margin-top:2%;">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-create" role="tab" aria-controls="v-pills-create" aria-selected="true">Crear</a>
+      <a class="nav-link" id="v-pills-modify-tab" data-toggle="pill" href="#v-pills-modify"  onclick="location.href='modifyItem.html'" role="tab" aria-controls="v-pills-modify" aria-selected="false">Buscar</a>
+      <a class="nav-link" id="v-pills-list-tab" data-toggle="pill" href="#v-pills-list" role="tab" aria-controls="v-pills-list" aria-selected="false">Listar proveedores</a>
+      <a class="nav-link" id="v-pills-back-tab" data-toggle="pill" href="#v-pills-back" onclick="location.href='/'" role="tab" aria-controls="v-pills-back" aria-selected="false">Volver</a>
+    </div>
+  </div>
+  <div class="col-9" style="margin-top:2%;">
+
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-create" role="tabpanel" aria-labelledby="v-pills-create-tab">
+
+        <form method="POST" action="/addProveedores.html" name="agregarProv" id="agregarProv">
+          <div class="form-group row">
+                <label for="razonProv" class="col-sm-2 col-form-label col-form-label-sm">Razón Social</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="razonProv"  name="razonProv">
+                    </div>
+          </div>
+          <div class="form-group row">
+                <label for="rutProv" class="col-sm-2 col-form-label col-form-label-sm">Rut</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="rutProv"  name="rutProv">
+                    </div>
+          </div>
+          <div class="form-group row">
+                <label for="mailProv" class="col-sm-2 col-form-label col-form-label-sm">Correo Electrónico</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="mailProv"  name="mailProv">
+                    </div>
+          </div>
+          <div class="form-group row">
+                <label for="telefonoProv" class="col-sm-2 col-form-label col-form-label-sm">Numero Telefónico</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" id="telefonoProv"  name="telefonoProv">
+                    </div>
+          </div>
+        </form>
+        <div align="center">
+            <button class="btn btn-secondary" onclick="location.href='/'">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+            data-target="#exampleModalCenter" id="guardar" onclick="valData()"> Guardar </button>
+        </div>
+  </div>
+      <div class="tab-pane fade" id="v-pills-modify" role="tabpanel" aria-labelledby="v-pills-modify-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-list" role="tabpanel" aria-labelledby="v-pills-list-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-back" role="tabpanel" aria-labelledby="v-pills-back-tab">...</div>
+    </div>
+  </div>
+</div>
+<script>
+    function savePass(){
+        $('#modalPass').css('display', 'none');
+        $('#savePass').css('display', 'block');
+        $('#modalCancel').css('display', 'none');
+        document.getElementById('exampleModalCenterTitle').innerHTML = '¡Proveedor creado exitosamente!';
+        setTimeout(2000);
+        return true;
+    }
+    window.onload = function checkErr(){
+        if ($('#checkErr').val() == 0) {
+            $('#exampleModalCenter').modal('toggle');
+            $('#modalCancel').css('display', 'none');
+            $('#btnOk').css('display', 'block');
+            document.getElementById('exampleModalCenterTitle').innerHTML = '¡Proveedor ya existe!';
+            return true;
+        }
+    }
+    function modalReset(){
+        $('#modalFail').css('display', 'none');
+        $('#modalPass').css('display', 'none');
+        $('#savePass').css('display', 'none');
+        $('#btnOk').css('display', 'none');
+        $('#btnCrear').css('display', 'none');
+    }
+    function valData() {
+        modalReset();
+      if ($('#razonProv').val().length < 1) {
+            $('#modalFail').css('display', 'block');
+            $('#btnOk').css('display', 'block');
+            $('#fieldFail').val('Razón social.');
+            return false;
+      }else if ($('#rutProv').val().length < 1) {
+            $('#modalFail').css('display', 'block');
+            $('#btnOk').css('display', 'block');
+            $('#fieldFail').val('Rut.');
+            return false;
+      }else if ($('#mailProv').val().length < 1) {
+            $('#modalFail').css('display', 'block');
+            $('#btnOk').css('display', 'block');
+            $('#fieldFail').val('Correo electrónico.');
+            return false;
+      }else if ($('#telefonoProv').val().length < 1) {
+            $('#modalFail').css('display', 'block');
+            $('#btnOk').css('display', 'block');
+            $('#fieldFail').val('Número telefónico.');
+            return false;
+      }else{
+            let rsp = document.forms["agregarProv"]["razonProv"].value;
+            let rp  = document.forms["agregarProv"]["rutProv"].value;
+            let mp  = document.forms["agregarProv"]["mailProv"].value;
+            let tp  = document.forms["agregarProv"]["telefonoProv"].value;
+
+            $('#modalPass').css('display', 'block');
+            document.getElementById('exampleModalCenterTitle').innerHTML = 'Datos del proveedor a registrar:';
+            $('#btnCrear').css('display', 'block');
+
+            document.getElementById('rsProvModal').innerHTML= rsp;
+            document.getElementById('rProvModal').innerHTML= rp;
+            document.getElementById('mProvModal').innerHTML= mp;
+            document.getElementById('tProvModal').innerHTML= tp;
+
+            return true;
+      }
+    //});
+    }
+</script>
 {% endblock %}

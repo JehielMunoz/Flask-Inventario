@@ -10,11 +10,11 @@ cred = credentials.Certificate('key.json')
 
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://proyectoi-invedu-default-rtdb.firebaseio.com/'
-    })
+})
 database = db.reference('/')
 
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # if request.method == 'POST' :
     # name = request.form.get("form")
@@ -27,7 +27,7 @@ def index():
         return render_template("index.html", t=provs)
 
 
-@app.route('/addItem.html', methods=['GET','POST'])
+@app.route('/addItem.html', methods=['GET', 'POST'])
 def addItem():
     dbPath = db.reference('/')
     dbPath = dbPath.child("data").child("especies").get()
@@ -47,65 +47,135 @@ def addItem():
 
         item = {
             "codigo_correlativo": int(maxId),
-            "especie":          especie,
-            "estado":           estado,
-            "precio_unitario":  int(precio_unitario),
-            "precio_total":     int(precio_total),
-            "fecha_recepcion":  fecha_recepcion,
-            "numero_factura":   int(numero_factura),
-            "rut_proveedor":    rut_proveedor,
-            "centro_de_costo":  centro_de_costo,
+            "especie": especie,
+            "estado": estado,
+            "precio_unitario": int(precio_unitario),
+            "precio_total": int(precio_total),
+            "fecha_recepcion": fecha_recepcion,
+            "numero_factura": int(numero_factura),
+            "rut_proveedor": rut_proveedor,
+            "centro_de_costo": centro_de_costo,
             "ubicacion_actual": ubicacion_actual,
-            "observaciones":    observaciones,
-            "codigo_barra":     int(codigo_barra)
+            "observaciones": observaciones,
+            "codigo_barra": int(codigo_barra)
         }
         try:
             dbAddPath = db.reference('/')
             dbAddPath = dbAddPath.child("data").child("especies").update({maxId: item})
             # dbAddPath.push({maxId: item})
-            #print(item)
+            # print(item)
             # database.child("data").child("especies").child(str(last_code)).push(item)
             # database.child(last_code).patch(item)
-            #return redirect("/")
+            # return redirect("/")
             print("Antes" + str(maxId))
             dbPathTwo = db.reference('/')
             dbPathTwo = dbPathTwo.child("data").child("especies").get()
             maxId = str(len(dbPathTwo))
             print("Despues" + str(maxId))
-            return render_template("addItem.html",cod=maxId)
+            return render_template("addItem.html", cod=maxId)
         except:
             return render_template("addItem.html", message="Something wrong happened")
-    return render_template("addItem.html",cod=maxId)
+    return render_template("addItem.html", cod=maxId)
 
-@app.route('/addProveedores.html', methods=['GET','POST'])
-def addProveedor():
-    dbPath = db.reference('/')
-    dbPath = dbPath.child("proveedores").get()
-    tamaño = str(len(dbPath))
 
+@app.route('/modifyItem.html', methods=['GET', 'POST'])
+def modifyItem():
+    o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12 = "","","","","","","","","","","",""
     if request.method == 'POST':
-        razon_social = request.form['razon_social']
-        rut = request.form['rut']
-        correo = request.form['email']
-        numero_telefonico = request.form['telefono']
+        especie = request.form["sCodCor"]
+        dbPath = db.reference('/')
+        dbPath = dbPath.child("data").child("especies").child(especie).get()
 
-        proveedor = {
-            "razonSocial":  razon_social,
-            "email":        correo,
-            "estado":       "Activo",
-            "telefono":     int(numero_telefonico),
-            "rut":          rut
-        }
-        try:         
-            dbAddPath = db.reference('/')
-            dbAddPath = dbAddPath.child("proveedores").update({rut: proveedor})
-            print(proveedor)
-            return redirect("/")
-        except:    
-            return render_template("addProveedores.html", message="Something wrong happened")        
-    return render_template("addProveedores.html", cod=tamaño)
+        try:
+            if("centro_de_costo" in dbPath): o1 = str(dbPath["centro_de_costo"])
+            else: o1="SIN-DATOS"
 
-@app.route('/addUsuarios.html', methods=['GET','POST'])
+            if("codigo_correlativo" in dbPath):o2 = str(dbPath["codigo_correlativo"])
+            else: o2 = "SIN-DATOS"
+
+            if("especie" in dbPath): o3 = str(dbPath["especie"])
+            else: o3 = "SIN-DATOS"
+
+            if("estado" in dbPath):
+                if(str(dbPath["estado"])=="B"):o4 = "BUENO"
+                elif(str(dbPath["estado"])=="M"):o4 = "MALO"
+                else:o4 = "REGULAR"
+            else: o4 = "SIN-DATOS"
+
+            if("fecha_recepcion" in dbPath): o5 = str(dbPath["fecha_recepcion"])
+            else: o5 = "SIN-DATOS"
+
+            if("numero_factura" in dbPath): o6 = str(dbPath["numero_factura"]); print(str(dbPath["numero_factura"]))
+            else: o6 = 0
+
+            if("precio_unitario" in dbPath): o7 = str(dbPath["precio_unitario"])
+            else: o7 = 0
+
+            if("rut_proveedor" in dbPath): o8 = str(dbPath["rut_proveedor"])
+            else: o8 = "SIN-DATOS"
+
+            if("ubicacion_actual" in dbPath): o9 = str(dbPath["ubicacion_actual"])
+            else: o9 = "SIN-DATOS"
+
+            if("codigo_barra" in dbPath): o10 = str(dbPath["codigo_barra"])
+            else: o10 = "SIN-DATOS"
+
+            if("precio_total" in dbPath): o11 = str(dbPath["precio_total"])
+            else: o11 = 0
+
+            if("observaciones" in dbPath): o12 = str(dbPath["observaciones"])
+            else: o12 = "SIN-DATOS"
+
+            return render_template("modifyItem.html",
+                                   rCCosto=o1,  rCCorrelativo=o2, rEspecie=o3,
+                                   rEstado=o4,  rFRecepcion=o5, rNFactura=o6,
+                                   rPUni=o7,    rRProveedor=o8, rUActual=o9,
+                                   rCBarra=o10, rPTotal=o11, rObs=o12)
+        except:
+            return render_template("modifyItem.html", err = "error")
+
+
+    return render_template("modifyItem.html",
+                           rCCosto=o1, rCCorrelativo=o2, rEspecie=o3,
+                           rEstado=o4, rFRecepcion=o5, rNFactura=o6,
+                           rPUni=o7, rRProveedor=o8, rUActual=o9,
+                           rCBarra=o10, rPTotal=o11, rObs=o12)
+
+
+@app.route('/addProveedores.html', methods=['GET', 'POST'])
+def addProveedor():
+    dbAddPath = db.reference('/')
+    if request.method == 'POST':
+        razon_social = request.form['razonProv']
+        rut = request.form['rutProv']
+        correo = request.form['mailProv']
+        numero_telefonico = request.form['telefonoProv']
+        buscaRut = dbAddPath.child("proveedores").child(rut).get()
+        print(buscaRut)
+        try:
+            if len(buscaRut)>0:
+                proveedor = {
+                    "razonSocial": razon_social,
+                    "email": correo,
+                    "estado": "Activo",
+                    "telefono": int(numero_telefonico),
+                    "rut": rut
+                }
+                try:
+                    dbAddPath.child("proveedores").update({rut: proveedor})
+                    print(proveedor)
+                    return render_template("addProveedores.html", err=1)
+                except:
+                    return render_template("addProveedores.html", message="Something wrong happened", err=1)
+
+            else:
+                return render_template("addProveedores.html", err=0)
+        except:
+            return render_template("addProveedores.html", err=1)
+    return render_template("addProveedores.html", err=1)
+
+
+@app.route('/addUsuarios.html', methods=['GET', 'POST'])
 def addUsuario():
     dbPath = db.reference('/')
     dbPath = dbPath.child("usuarios").get()
@@ -117,30 +187,30 @@ def addUsuario():
         contraseña = request.form['contraseña']
 
         usuarios = {
-            "razonSocial":  nombre,
-            "email":        correo,
-            "estado":       "Activo",
-            "telefono":     int(numero_telefonico),
-            "rut":          rut,
-            "contraseña":   contraseña
+            "razonSocial": nombre,
+            "email": correo,
+            "estado": "Activo",
+            "telefono": int(numero_telefonico),
+            "rut": rut,
+            "contraseña": contraseña
         }
-        try:         
+        try:
             dbAddPath = db.reference('/')
             dbAddPath = dbAddPath.child("usuarios").update({rut: usuarios})
             print(usuarios)
             return redirect("/")
-        except:    
-            return render_template("addUsuarios.html", message="Something wrong happened")        
+        except:
+            return render_template("addUsuarios.html", message="Something wrong happened")
     return render_template("Usuarios.html")
 
-@app.route('/usuarios.html', methods=['GET','POST'])
+
+@app.route('/usuarios.html', methods=['GET', 'POST'])
 def cambiarPagina():
     return render_template("addUsuarios.html")
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 """
 :

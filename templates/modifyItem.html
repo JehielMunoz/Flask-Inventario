@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Agregar Especie</title>
+{% endblock %}
+
+{% block body %}<!--@submit.prevent="processForm"   -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Codigo correlativo de la especie: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Codigo correlativo:</p>
+        <p>Descripcion:</p>
+        <p>Numero de factura:</p>
+        <p>Codigo de barras:</p>
+        <p>Ubicacion:</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="row" style="width:100%;">
+
+  <div class="col-2" style="margin-top:2%;">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-create" onclick="location.href='addItem.html'" role="tab" aria-controls="v-pills-create" aria-selected="false">Crear</a>
+      <a class="nav-link active" id="v-pills-modify-tab" data-toggle="pill" href="#v-pills-modify" role="tab" aria-controls="v-pills-modify" aria-selected="true">Buscar</a>
+      <a class="nav-link" id="v-pills-list-tab" data-toggle="pill" href="#v-pills-list" role="tab" aria-controls="v-pills-messages" aria-selected="false">Listar inventario</a>
+      <a class="nav-link" id="v-pills-back-tab" data-toggle="pill" href="#v-pills-back" onclick="location.href='/'" role="tab" aria-controls="v-pills-list" aria-selected="false">Volver</a>
+    </div>
+  </div>
+  <div class="col-9" style="margin-top:2%;">
+
+    <div class="tab-content" id="v-pills-tabContent">
+
+        <div class="tab-pane fade" id="v-pills-create" role="tabpanel" aria-labelledby="v-pills-create-tab">...</div>
+         <!--  BUSCAR ITEM  -->
+        <form method="POST" action="/modifyItem.html" name="sCodigoCor" id="sCodigoCor">
+            <div class="input-group mb-3">
+                <input id="sCodCor" name="sCodCor" type="text" class="form-control" placeholder="Ingrese codigo correlativo a buscar" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="input" id="button-addon2">Buscar</button>
+                </div>
+            </div>
+        </form>
+        <hr/>
+      <div class="tab-pane fade show active" id="v-pills-modify" role="tabpanel" aria-labelledby="v-pills-modify-tab">
+          <form method="POST" action="/modifyItem.html" name="modifyItem" id="modifyItem">
+            <div class="form-group row">
+                <label for="sEspecie" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
+                    <div class="col-sm-10">
+                        <input value='{{rEspecie}}' type="text" class="form-control form-control-sm" id="sEspecie" placeholder="Descripcion de la especie." name="sEspecie">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sCodigo_barra" class="col-sm-2 col-form-label col-form-label-sm">Código de barras</label>
+                    <div class="col-sm-10">
+                        <input value='{{rCBarra}}' type="text" class="form-control form-control-sm" id="sCodigo_barra" placeholder="" name="sCodigo_barra">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sNumero_factura" class="col-sm-2 col-form-label col-form-label-sm">Número de factura</label>
+                    <div class="col-sm-10">
+                        <input  value='{{rNFactura}}' type="number" class="form-control form-control-sm" id="sNumero_factura" name="sNumero_factura" placeholder="Factura asociada a la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sPrecio_unitario" class="col-sm-2 col-form-label col-form-label-sm">Precio unitario</label>
+                    <div class="col-sm-10">
+                        <input value='{{rPUni}}' type="number" class="form-control form-control-sm" id="sPrecio_unitario" name="sPrecio_unitario" placeholder="Precio de la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sPrecio_total" class="col-sm-2 col-form-label col-form-label-sm">Precio Total</label>
+                    <div class="col-sm-10">
+                        <input value='{{rPTotal}}' type="number" class="form-control form-control-sm" id="sPrecio_total" name="sPrecio_total" placeholder="Precio total de la compra.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sFecha_recepcion" class="col-sm-2 col-form-label col-form-label-sm">Fecha de recepción</label>
+                    <div class="col-sm-10">
+                        <input value='{{rFRecepcion}}' type="text" class="form-control form-control-sm" id="sFecha_recepcion" name="sFecha_recepcion" placeholder="Fecha en la que se recibio la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sRut_proveedor" class="col-sm-2 col-form-label col-form-label-sm">Rut del proveedor</label>
+                    <div class="col-sm-10">
+                        <input value='{{rRProveedor}}' type="text" class="form-control form-control-sm" id="sRut_proveedor" name="sRut_proveedor" placeholder="Rut sin punto con guión.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sCentro_de_costo" class="col-sm-2 col-form-label col-form-label-sm">Recursos</label>
+                    <div class="col-sm-10">
+                        <input value='{{rCCosto}}' type="text" class="form-control form-control-sm" id="sCentro_de_costo" name="sCentro_de_costo" placeholder="Centro de costos.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sUbicacion_actual" class="col-sm-2 col-form-label col-form-label-sm">Ubicación actual</label>
+                    <div class="col-sm-10">
+                        <input value='{{rUActual}}' type="text" class="form-control form-control-sm" id="sUbicacion_actual" name="sUbicacion_actual" placeholder="Ubicación en la que se encuentra la especie.">
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="sObservaciones" class="col-sm-2 col-form-label col-form-label-sm">Observaciones</label>
+                    <div class="col-sm-10">
+                        <input value='{{rObs}}' type="text" class="form-control form-control-sm" id="sObservaciones" name="sObservaciones" placeholder="">
+                    </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="sEstado" class="col-sm-2 col-form-label col-form-label-sm">Estado</label>
+                    <div class="col-sm-10">
+                        <input value='{{rEstado}}' type="text" class="form-control form-control-sm" id="sEstado" name="sEstado" placeholder="">
+                    </div>
+            </div>
+
+        </form>
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-list" role="tabpanel" aria-labelledby="v-pills-list-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-back" role="tabpanel" aria-labelledby="v-pills-back-tab">...</div>
+    </div>
+  </div>
+</div>
+<!--
+<div align="center">
+    <form method="POST" action="/addItem.html" name="newItem" id="newItem2" >
+        <h3>Codigo Producto:{{cod}}</h3><br>
+
+                <td></td><!-
+                <th></th><td>
+                onclick="return confirm('Especie creada exitosamente')"
+                <input onclick="showItem({{cod}})" type="submit" value="Agregar Especie" id="addProd" name="addProd">
+                --
+                    <td>
+                        <!- Button trigger modal --
+                        <button type="input" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                          Launch demo modal
+                        </button>
+                        </td>
+            </tr>
+        </table>
+    </form>
+
+    <div>
+        <button onclick="location.href='/'">Cancelar</button>
+    </div>
+    </div>-->
+<script>
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('New message to ' + recipient)
+      modal.find('.modal-body input').val(recipient)
+    })
+
+    function showItem(cod){
+    let esp = document.forms["newItem"]["especie"].value;
+      let est = document.forms["newItem"]["estado"].value;
+      let pun = document.forms["newItem"]["precio_unitario"].value;
+      let pto = document.forms["newItem"]["precio_total"].value;
+      let fre = document.forms["newItem"]["fecha_recepcion"].value;
+      let nfa = document.forms["newItem"]["numero_factura"].value;
+      let rpr = document.forms["newItem"]["rut_proveedor"].value;
+      let cco = document.forms["newItem"]["centro_de_costo"].value;
+      let uac = document.forms["newItem"]["ubicacion_actual"].value;
+      let obs = document.forms["newItem"]["observaciones"].value;
+      let cba = document.forms["newItem"]["codigo_barra"].value;
+
+      let msg = "Codigo correlativo: " + cod + '\n' +
+                "Descripcion: " + document.forms["newItem"]["especie"].value + '\n' +
+                "Numero de factura: " + document.forms["newItem"]["numero_factura"].value + '\n' +
+                "Codigo de barras: " + document.forms["newItem"]["codigo_barra"].value + '\n' +
+                "Ubicacion: " + document.forms["newItem"]["ubicacion_actual"].value;
+      console.log(cba);
+      let msgFinal = "Especie creada exitosamente: " + msg;
+      return confirm(msgFinal)
+    }
+    function validateForm() {
+      let esp = document.forms["newItem"]["especie"].value;
+      let est = document.forms["newItem"]["estado"].value;
+      let pun = document.forms["newItem"]["precio_unitario"].value;
+      let pto = document.forms["newItem"]["precio_total"].value;
+      let fre = document.forms["newItem"]["fecha_recepcion"].value;
+      let nfa = document.forms["newItem"]["numero_factura"].value;
+      let rpr = document.forms["newItem"]["rut_proveedor"].value;
+      let cco = document.forms["newItem"]["centro_de_costo"].value;
+      let uac = document.forms["newItem"]["ubicacion_actual"].value;
+      let obs = document.forms["newItem"]["observaciones"].value;
+      let cba = document.forms["newItem"]["codigo_barra"].value;
+
+      if (esp == "") {
+        alert("Debe ingresar descripción.");
+        return false;
+      }
+      if (est == "") {
+        alert("Debe ingresar estado.");
+        return false;
+      }
+      if (pun == "") {
+        alert("Debe ingresar precio unitario.");
+        return false;
+      }
+      if (pto == "") {
+        alert("Debe ingresar precio total.");
+        return false;
+      }
+      if (fre == "") {
+        alert("Debe ingresar fecha de recepción.");
+        return false;
+      }
+      if (nfa == "") {
+        alert("Debe ingresar numero de factura.");
+        return false;
+      }
+      if (rpr == "") {
+        alert("Debe ingresar rut de proveedor.");
+        return false;
+      }
+      if (cco == "") {
+        alert("Debe ingresar centro de costos.");
+        return false;
+      }
+      if (uac == "") {
+        alert("Debe ingresar ubicacion actual.");
+        return false;
+      }
+      if (obs == "") {
+        alert("Debe ingresar observacion.");
+        return false;
+      }
+      if (cba == "") {
+        alert("Debe ingresar codigo de barras.");
+        return false;
+      }
+      else{
+        confirm('Especie creada exitosamente');
+        return true;
+      }
+    }
+</script>
+{% endblock %}
